@@ -904,7 +904,7 @@
                                 "elementLabel": "Request type pie",
                                 "eventMappings": [
                                     {
-                                        "eventMappingId": "JAjjnaafpaDkPrjjSsHjJhhagEieedd",
+                                        "eventMappingId": "hzaaEFPhcDEzYjjWIHeeEmIggHfU",
                                         "isConfiguration": false,
                                         "offRowStorageId": null,
                                         "sourceEventApiName": "now_vis_extensions.NOW_VIS_WRAPPER#CLICKED",
@@ -932,8 +932,13 @@
                                                             "fields": {
                                                                 "container": {
                                                                     "table": {
-                                                                        "type": "JSON_LITERAL",
-                                                                        "value": "@payload.params.table"
+                                                                        "binding": {
+                                                                            "address": [
+                                                                                "params",
+                                                                                "table"
+                                                                            ]
+                                                                        },
+                                                                        "type": "EVENT_PAYLOAD_BINDING"
                                                                     }
                                                                 },
                                                                 "type": "MAP_CONTAINER"
@@ -949,16 +954,26 @@
                                                             "params": {
                                                                 "container": {
                                                                     "listTitle": {
-                                                                        "type": "JSON_LITERAL",
-                                                                        "value": "@payload.title"
+                                                                        "binding": {
+                                                                            "address": [
+                                                                                "params",
+                                                                                "listTitle"
+                                                                            ]
+                                                                        },
+                                                                        "type": "EVENT_PAYLOAD_BINDING"
                                                                     },
                                                                     "listView": {
                                                                         "type": "JSON_LITERAL",
                                                                         "value": "Experience_list"
                                                                     },
                                                                     "query": {
-                                                                        "type": "JSON_LITERAL",
-                                                                        "value": "@payload.params.query"
+                                                                        "binding": {
+                                                                            "address": [
+                                                                                "params",
+                                                                                "query"
+                                                                            ]
+                                                                        },
+                                                                        "type": "EVENT_PAYLOAD_BINDING"
                                                                     }
                                                                 },
                                                                 "type": "MAP_CONTAINER"
@@ -989,7 +1004,7 @@
                                                     "sysId": "270edb7b1b458d10b81fdce7cc4bcbea"
                                                 },
                                                 "operation": null,
-                                                "targetId": "uYoleehhfutCaaPmeeddFYDiiEeeddddZtcbb",
+                                                "targetId": "jjxggGkgCzCEbbkeeddAgPeeddWtuUNRff",
                                                 "type": "EVENT"
                                             }
                                         ]
@@ -1136,6 +1151,7 @@
                                                     {
                                                         "dataSource": "dGFibGV4XzU4ODcyX25lZWRpdF9uZWVkaXQxNjQyNzEyODI1MDQ3",
                                                         "groupByField": "u_request_type",
+                                                        "isChoice": true,
                                                         "isPaBucket": false,
                                                         "isRange": false
                                                     }
@@ -1827,7 +1843,7 @@
                                 "elementLabel": "All Active NeedIts list",
                                 "eventMappings": [
                                     {
-                                        "eventMappingId": "ckyoxiidymaajjddwddeggwbdlffplyx",
+                                        "eventMappingId": "seehhypDfJeDkEXeeddGIGDROqBGcJ",
                                         "isConfiguration": false,
                                         "offRowStorageId": null,
                                         "sourceEventApiName": "sn_record_list_con.NOW_RECORD_LIST_CONNECTED#DATA_FETCH_SUCCEEDED",
@@ -1849,15 +1865,17 @@
                                                     "payload": {
                                                         "script": {
                                                             "apiVersion": "1.0.0",
-                                                            "inlineScript": "/**\n * @param {params} params\n * @param {api} params.api\n * @param {any} params.event\n * @param {any} params.imports\n */\nfunction evaluateEvent({\n    api,\n    event\n}) {\n\n    // Get the query value from the payload\n    var payloadQuery = event.payload.query;\n\n    return {\n        items: [{\n            \"content\": {\n                \"type\": \"html\",\n                \"value\": \"&lt;span&gt;&lt;em&gt;NeedIt&lt;/em&gt; records were fetched successfully with query &lt;strong&gt;\" + payloadQuery + \"&lt;/strong&gt;.&lt;/span&gt;\"\n            },\n            \"action\": {\n                \"type\": \"dismiss\"\n            }\n        }]\n    };\n}",
-                                                            "scriptSysId": null
+                                                            "controllerElementId": null,
+                                                            "inlineScript": "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({\n    api,\n    event\n}) {\n\n    // Get the query value from the payload\n    var payloadQuery = event.payload.query;\n\n    return {\n        items: [{\n            \"content\": {\n                \"type\": \"html\",\n                \"value\": \"&lt;span&gt;&lt;em&gt;NeedIt&lt;/em&gt; records were fetched successfully with query &lt;strong&gt;\" + payloadQuery + \"&lt;/strong&gt;.&lt;/span&gt;\"\n            },\n            \"action\": {\n                \"type\": \"dismiss\"\n            }\n        }]\n    };\n}",
+                                                            "scriptSysId": null,
+                                                            "target": null
                                                         },
                                                         "type": "CLIENT_TRANSFORM_SCRIPT"
                                                     },
                                                     "sysId": "49fe7d575f983bb3f8eea3fa8d40694c"
                                                 },
                                                 "operation": null,
-                                                "targetId": "ckyoxiidymaajjddxddeggwbbbshhffypii",
+                                                "targetId": "bblREkQDLAUBLjjeeddcLtvQcVFcce",
                                                 "type": "EVENT"
                                             }
                                         ]
@@ -2159,6 +2177,7 @@
                             "version": "3.0.0"
                         }
                     },
+                    "preset": null,
                     "propertyValues": {
                         "ariaRegionHeadingLevel": {
                             "type": "JSON_LITERAL",
@@ -2176,9 +2195,17 @@
                             "type": "JSON_LITERAL",
                             "value": ""
                         },
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
                         "includeAriaHeading": {
                             "type": "JSON_LITERAL",
                             "value": false
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "fullheight"
                         },
                         "type": {
                             "type": "JSON_LITERAL",
@@ -2509,14 +2536,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-01-21 15:00:21</sys_created_on>
         <sys_id>5fd11afb1b818d10b81fdce7cc4bcb15</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Home</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy/>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sys_ux_macroponent_5fd11afb1b818d10b81fdce7cc4bcb15</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-05 08:32:58</sys_updated_on>
+        <sys_updated_on>2025-09-05 13:04:06</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=5fd11afb1b818d10b81fdce7cc4bcb15"/>
 </record_update>
